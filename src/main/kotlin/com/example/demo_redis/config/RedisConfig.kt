@@ -15,9 +15,9 @@ import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer
 import org.springframework.data.redis.serializer.StringRedisSerializer
 
 
+@Primary
 @Configuration
 @EnableRedisRepositories
-@Primary
 class RedisConfig {
 
 
@@ -69,7 +69,7 @@ class RedisConfig {
     }*/
 
     @Bean
-    fun redisTemplate(): RedisTemplate<String, String> {
+    fun redisTemplates(): RedisTemplate<String, String> {
         val redisTemplate = RedisTemplate<String,String>()
         redisTemplate.keySerializer = StringRedisSerializer()
         redisTemplate.hashKeySerializer = GenericToStringSerializer(String::class.java)
